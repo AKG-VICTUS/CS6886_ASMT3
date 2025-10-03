@@ -28,12 +28,20 @@ This repository provides a reproducible pipeline to:
 ```
 mobilenetv2_quant/
 │
-├── quantize_improved.py          # Quantization functions (weights & activations)
-├── quantize_mobilenetv2_multi.py # Main script: baseline + multiple quantization configs
-├── utils.py                      # Evaluation, model size, compression metrics
-├── requirements.txt              # Dependencies
-├── README.md                     # This file
-└── wandb/                        # Auto-created logging folder
+├── checkpoints/              
+│   └── mobilenetv2_cifar10_fp32.pth   # Baseline FP32 model (generated after training)
+│
+├── data/                     # CIFAR-10 dataset (downloaded automatically)
+│
+├── dataloader.py             # Dataset loading, normalization, augmentation
+├── mobilenet_v2_model.py     # MobileNet-V2 model definition (CIFAR-10 adapted)
+├── train_mobilenetv2.py      # FP32 training script
+├── quantize_improved.py      # Custom configurable quantization (weights/activations)
+├── quantize_mobilenetv2_multi.py # Multiple quantization configs & W&B logging
+├── utils.py                  # Evaluation, model size, compression metrics
+├── requirements.txt          # Python dependencies
+└── README.md                 # Documentation & run instructions
+
 ```
 
 ---
@@ -70,7 +78,7 @@ python3 train_mobilenetv2.py
 python3 quantize_mobilenetv2_multi.py
 ```
 
-This script:
+These scripts:
 
 * Trains MobileNetV2 on CIFAR-10 (baseline FP32).
 * Applies multiple quantization configs (e.g., 8-bit, 6-bit, 4-bit).
