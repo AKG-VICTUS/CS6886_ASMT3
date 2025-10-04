@@ -39,7 +39,6 @@ mobilenetv2_quant/
 ├── quantize_improved.py      # Custom configurable quantization (weights/activations)
 ├── quantize_mobilenetv2_multi.py # Multiple quantization configs & W&B logging
 ├── utils.py                  # Evaluation, model size, compression metrics
-├── requirements.txt          # Python dependencies
 └── README.md                 # Documentation & run instructions
 
 ```
@@ -60,6 +59,14 @@ Install dependencies:
 ```bash
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129  ##for GPU with CUDA12.9
 
+## or
+
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu    ##for CPU
+
+## or
+
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4  ##for AMD GPU
+
 pip install wandb
 
 pip install numpy tqdm
@@ -75,6 +82,7 @@ wandb login    ## enter API key upon prompting
 
 ```bash
 python3 train_mobilenetv2.py
+
 python3 quantize_mobilenetv2_multi.py
 ```
 
