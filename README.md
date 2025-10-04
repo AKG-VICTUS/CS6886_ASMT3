@@ -83,7 +83,7 @@ wandb login    ## enter API key upon prompting
 ```bash
 python3 train_mobilenetv2.py
 
-python3 quantize_mobilenetv2_multi.py
+python3 quantize_mobilenetv2_multi.py --weight_quant_bits 8 --activation_quant_bits 8
 ```
 
 These scripts:
